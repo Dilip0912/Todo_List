@@ -1,0 +1,18 @@
+input {
+    width:100%;
+}
+
+button{
+    min-width: 80px;
+}
+.text_center{
+    align-items: left;
+}
+.item_container{
+    text-align: left;
+}
+
+
+.my_row{
+    margin:5px 0px 0px 0px;
+}
