@@ -5,19 +5,26 @@ import viteLogo from "/vite.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import AppName from "./AppName";
-import TodoItem1 from "./TodoItem1";
-import TodoItem2 from "./TodoItem2";
 import AddTodo from "./AddTodo";
+import TodoItem from "./components/TodoItem";
 
 function App() {
+  let item = [
+    {
+      todoName: "Trip",
+      todoDate: "24/02/25",
+    },
+    {
+      todoName: "Ride",
+      todoDate: "12/03/25",
+    },
+  ];
+
   return (
     <center className="todo_container">
       <AppName />
       <AddTodo />
-      <div className="item_container">
-        <TodoItem1 />
-        <TodoItem2 />
-      </div>
+      <TodoItem item={item}></TodoItem>
     </center>
   );
 }
