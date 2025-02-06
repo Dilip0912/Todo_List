@@ -1,5 +1,5 @@
-function TodoItems({item}) {
-    console.log(item);
+function TodoItems({item,DeleteButton}) {
+    // console.log(item);
   return (
     <div className="container">
       <div className="row my_row">
@@ -8,7 +8,7 @@ function TodoItems({item}) {
           <p>{item.todoDate}</p>
         </div>
         <div className="col-2">
-          <button type="button" className="btn btn-danger">
+          <button type="button" className="btn btn-danger" onClick={DeleteButton}>
             Delete
           </button>
         </div>

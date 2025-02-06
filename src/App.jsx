@@ -9,7 +9,8 @@ import AddTodo from "./AddTodo";
 import TodoItem from "./components/TodoItem";
 
 function App() {
-  let item = [
+  // let item = ;
+  let [item,setItem] = useState([
     {
       todoName: "Trip",
       todoDate: "24/02/25",
@@ -18,13 +19,19 @@ function App() {
       todoName: "Ride",
       todoDate: "12/03/25",
     },
-  ];
+  ]);
+  function handleOnClick(todoname,tododate){
+    let newTodoItems=[...item,{"todoName":todoname,"todoDate":tododate}]
+    // console.log(newTodoItems);
+    setItem(newTodoItems);
+  }
+
 
   return (
     <center className="todo_container">
       <AppName />
-      <AddTodo />
-      <TodoItem item={item}></TodoItem>
+      <AddTodo handleClick={handleOnClick}/>
+      <TodoItem item={item} handleDeleteClick={handleOnDeleteClick}></TodoItem>
     </center>
   );
 }
