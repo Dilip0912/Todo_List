@@ -10,31 +10,25 @@ import TodoItem from "./components/TodoItem";
 import NoTask from "./components/NoTask";
 
 function App() {
-  // let item = [
-  //   {
-  //     todoName: "Trip",
-  //     todoDate: "24/02/25",
-  //   },
-  //   {
-  //     todoName: "Ride",
-  //     todoDate: "12/03/25",
-  //   },
-  // ];
   let [item, setItem] = useState([]);
   function handleOnClick(todoname, tododate) {
     let newTodoItems = [...item, { todoName: todoname, todoDate: tododate }];
-    // console.log(newTodoItems);
     setItem(newTodoItems);
   }
 
   let itemCopy = item;
   function handleOnDeleteClick(todoname, tododate) {
-    
+    let index = itemCopy.findIndex(
+      (items) => items.todoName === todoname && items.todoDate === tododate
+    );
 
-    let newArr=item.filter(items=>items.todoName!==removingElement.todoName || items.todoDate!==removingElement.todoDate)
-    console.log(newArr);
-    setItem(newArr);
-    setItem(newArr);
+    itemCopy = itemCopy.filter((items, i) => i !== index);
+    console.log(itemCopy);
+
+    // let newArr=item.filter(items=>items.todoName!==removingElement.todoName || items.todoDate!==removingElement.todoDate)
+    // console.log(newArr);
+    // setItem(newArr);
+    setItem(itemCopy);
   }
 
   return (
