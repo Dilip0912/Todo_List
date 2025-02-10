@@ -8,6 +8,7 @@ import AppName from "./AppName";
 import AddTodo from "./AddTodo";
 import TodoItem from "./components/TodoItem";
 import NoTask from "./components/NoTask";
+import { TodoItemContext } from "./store/Todo-item-context";
 
 function App() {
   let [item, setItem] = useState([]);
@@ -32,12 +33,16 @@ function App() {
   }
 
   return (
-    <center className="todo_container">
-      <AppName />
-      <AddTodo handleClick={handleOnClick} />
-      <TodoItem item={item} handleDeleteClick={handleOnDeleteClick}></TodoItem>
-      {item.length===0?<NoTask></NoTask>:""}
-    </center>
+    <TodoItemContext.Provider value={item}>
+      <center className="todo_container">
+        <AppName />
+        <AddTodo handleClick={handleOnClick} />
+        <TodoItem
+          handleDeleteClick={handleOnDeleteClick}
+        ></TodoItem>
+        {item.length === 0 ? <NoTask></NoTask> : ""}
+      </center>
+    </TodoItemContext.Provider>
   );
 }
 
