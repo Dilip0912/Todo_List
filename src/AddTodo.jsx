@@ -1,8 +1,10 @@
-import { useState,useRef } from "react";
-function AddTodo({ handleClick }) {
+import { useState,useRef, useContext } from "react";
+import { TodoItemContext } from "./store/Todo-item-context";
+function AddTodo() {
 
   let todoNameRef=useRef();
   let todoDateRef=useRef();
+  const {addItem}=useContext(TodoItemContext);
   // let [todoinput, setTodoInput] = useState();
   // let [tododate, setTodoDate] = useState();
 
@@ -15,7 +17,7 @@ function AddTodo({ handleClick }) {
   function handleAddButton() {
     let todoinput=todoNameRef.current.value;
     let tododate=todoDateRef.current.value;
-    handleClick(todoinput, tododate);
+    addItem(todoinput, tododate);
   }
   return (
     <div className="container text-center">

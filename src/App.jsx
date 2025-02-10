@@ -12,13 +12,13 @@ import { TodoItemContext } from "./store/Todo-item-context";
 
 function App() {
   let [item, setItem] = useState([]);
-  function handleOnClick(todoname, tododate) {
+  function addItem(todoname, tododate) {
     let newTodoItems = [...item, { todoName: todoname, todoDate: tododate }];
     setItem(newTodoItems);
   }
 
   let itemCopy = item;
-  function handleOnDeleteClick(todoname, tododate) {
+  function deleteItem(todoname, tododate) {
     let index = itemCopy.findIndex(
       (items) => items.todoName === todoname && items.todoDate === tododate
     );
@@ -33,13 +33,11 @@ function App() {
   }
 
   return (
-    <TodoItemContext.Provider value={item}>
+    <TodoItemContext.Provider value={{ item, addItem, deleteItem }}>
       <center className="todo_container">
         <AppName />
-        <AddTodo handleClick={handleOnClick} />
-        <TodoItem
-          handleDeleteClick={handleOnDeleteClick}
-        ></TodoItem>
+        <AddTodo />
+        <TodoItem></TodoItem>
         {item.length === 0 ? <NoTask></NoTask> : ""}
       </center>
     </TodoItemContext.Provider>
